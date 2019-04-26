@@ -23,6 +23,10 @@ users = config['USERS']
 
 msg = "Important message!"
 
+f = open(private_key, 'r')
+key = f.read()
+f.close()
+
 def set_field_types(channel_type):
     if channel_type == 'messenger':
         from_field = "id"
@@ -97,10 +101,6 @@ def build_user_workflow(user):
 def send_message_with_failover(workflow):
 
     expiry = 1*60*60 # JWT expires after one hour (default is 15 minutes)
-
-    f = open(private_key, 'r')
-    key = f.read()
-    f.close()
 
     payload = {
         'application_id': app_id,
