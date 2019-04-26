@@ -1,0 +1,44 @@
+{
+    "APP": {
+        "APP_ID": "abcd1234-8238-42d0-a03a-abcd1234...",
+        "PRIVATE_KEY": "private.key"
+    },
+    "FROM": {
+        "MESSENGER": "COMPANY MESSENGER ID",
+        "VIBER": "COMPANY VIBER ID",
+        "WHATSAPP": "COMPANY WHATSAPP NUMBER",
+        "SMS": "COMPANY SMS NAME/NUMBER"
+    },
+    "USERS": [
+        {
+            "name": "Tony",
+            "channels": [
+                {
+                    "type": "messenger",
+                    "id_num": "USER MESSENGER ID"
+                },
+                {
+                    "type": "sms",
+                    "id_num": "USER PHONE NUMBER"
+                }
+            ]
+        },
+        {
+            "name": "Michael",
+            "channels": [
+                {
+                    "type": "viber_service_msg",
+                    "id_num": "USER PHONE NUMBER"
+                },
+                {
+                    "type": "whatsapp",
+                    "id_num": "USER PHONE NUMBER"
+                },
+                {
+                    "type": "sms",
+                    "id_num": "USER PHONE NUMBER"
+                }
+            ]
+        }
+    ]
+}
