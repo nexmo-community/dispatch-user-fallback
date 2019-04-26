@@ -2,13 +2,14 @@
 
 The use case is to fallback on a per-user basis. For example:
 
-1. Michael. If message not read then...
-2. Tony. If message not read then...
-3. Phil.
+1. Michael. If message not read on multiple channels then...
+2. Tony. If message not read on multiple channels then...
+3. Phil. If message not read on multiple channels then panic.
 
 ## Case 1
 
-Could also have a version where you specify multiple channels per user:
+Could also have a version where you specify multiple channels per
+user:
 
 1. Michael on primary channel. If message not read then...
 2. Michael on secondary channel. If this fails then...
@@ -19,7 +20,9 @@ Could also have a version where you specify multiple channels per user:
 
 ## Case 2
 
-Users can have varying types and numbers of channels:
+Users can have varying types and numbers of channels. Complex
+multi-user, multi-channels workflows can be built from a simple config
+file:
 
 ``` json
 {
@@ -85,15 +88,17 @@ Users can have varying types and numbers of channels:
 }
 ```
 
-### Notes on use case 2
+Notes:
 
 * User must have at least two channels.
 * User can mix any number of channels and types as long as there is at least two channels. For example user could have 3 SMS numbers plus a Messenger ID.
 * The last channel specified for a user will be taken to be the final failover channel. 
 * Final failover channel does not have to be SMS although it typically will be.
 * A workflow is created on a per user basis, but you can specify a workflow for each user.
-* An atempt is made to apply a workflow to a user in the order in which they are listed in the configuration file.
+* An attempt is made to apply a workflow to a user in the order in which they are listed in the configuration file.
 
+## Case 3
 
+Same as case 2, but has the added capability to specify failover condition and expiry time per channel.
 
-
+----
