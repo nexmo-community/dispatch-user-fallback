@@ -68,7 +68,6 @@ def build_user_workflow(user):
     fail_obj['to']['type'] = channel['type']
 
     fail_obj['message']['content']['type'] = 'text'
-    fail_obj['message']['content']['type'] = 'text'
     fail_obj['message']['content']['text'] = "[%s]: %s" % (user['name'], msg)
 
     for channel in user['channels']:
