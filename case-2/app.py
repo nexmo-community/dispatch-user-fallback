@@ -50,7 +50,7 @@ def set_from_channel(channel_type):
     return from_channel
 
 def build_user_workflow(user):
-
+    
     flow = {}
     flow['template'] = 'failover'
     flow['workflow'] = []
@@ -69,7 +69,7 @@ def build_user_workflow(user):
 
     fail_obj['message']['content']['type'] = 'text'
     fail_obj['message']['content']['type'] = 'text'
-    fail_obj['message']['content']['text'] = msg
+    fail_obj['message']['content']['text'] = "[%s]: %s" % (user['name'], msg)
 
     for channel in user['channels']:
 
@@ -84,7 +84,7 @@ def build_user_workflow(user):
         obj['to']['type'] = channel['type']
 
         obj['message']['content']['type'] = 'text'
-        obj['message']['content']['text'] = msg
+        obj['message']['content']['text'] = "[%s]: %s" % (user['name'], msg)
 
         obj['failover']['expiry_time'] = 600
         obj['failover']['condition_status'] = 'read'    
@@ -120,6 +120,7 @@ def send_message_with_failover(workflow):
 
 # Main
 for user in users:
+    print("User: %s" % user['name'])
     workflow = build_user_workflow(user)
     if debug_mode:
         print(json.dumps(workflow, indent=4, sort_keys=False))

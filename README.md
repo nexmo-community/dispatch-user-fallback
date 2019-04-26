@@ -35,6 +35,19 @@ Users can have varying types and numbers of channels:
     },
     "USERS": [
         {
+            "name": "Fred",
+            "channels": [
+                {
+                    "type": "sms",
+                    "id_num": "4470000002"
+                },
+                {
+                    "type": "sms",
+                    "id_num": "4470000003"
+                }
+            ]
+        },
+        {
             "name": "Michael",
             "channels": [
                 {
@@ -43,7 +56,11 @@ Users can have varying types and numbers of channels:
                 },
                 {
                     "type": "sms",
-                    "id_num": "4470000002"
+                    "id_num": "4470000004"
+                },
+                {
+                    "type": "sms",
+                    "id_num": "4470000005"
                 }
             ]
         },
@@ -67,4 +84,16 @@ Users can have varying types and numbers of channels:
     ]
 }
 ```
+
+### Notes on use case 2
+
+* User must have at least two channels.
+* User can mix any number of channels and types as long as there is at least two channels. For example user could have 3 SMS numbers plus a Messenger ID.
+* The last channel specified for a user will be taken to be the final failover channel. 
+* Final failover channel does not have to be SMS although it typically will be.
+* A workflow is created on a per user basis, but you can specify a workflow for each user.
+* An atempt is made to apply a workflow to a user in the order in which they are listed in the configuration file.
+
+
+
 
